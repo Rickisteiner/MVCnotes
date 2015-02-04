@@ -1,0 +1,73 @@
+MVC
+
+1. MVCs encourage improved app orginization though seperation of concerns.
+   AKA sepperating sepperating Models (business data), Views (user interfaces), and Controllers (third party component).
+2. Origionally, the aim was to sepperate app logic from user interface.
+   The idea once you begin breaking things down and sepperating them, they become reusable. 
+3. But basically, it seems to be away of sepperating data and making it more usable and organized.
+4. Model is the database. ERB is the Views. Server is the controller. 
+
+MVC For JS Developers
+
+1. JS is one of the languages that allow for MVC therefore allowing us to structure out applications in an easier way.
+   What are some examples?
+     Backbone
+     Ember
+     Angular
+       These frameworks all allow for easier to read/understand code.
+
+Models
+
+1. Models manage the data for an application.
+2. Models are not concerned with the user-interface or presentation layers.
+3. When a model is updated, it will notify it's observers AKA Views that a change occured so they know to look out for that.
+4. Models need persistance to work properly.
+5. Just like a database they are only concerned with data and the data is specific to the model.
+6. These can be reausable.
+7. Models may have multiple views hookedup - AKA multiple ERB files.
+8. Models can also be grouped together.
+    This allows us to write application logic based on notifications from the group once any model is updated.
+    Which means you don't have to keep track of each model sepperatly.
+9. Many models also use something called state - which refers to current state. This is important with SPA's.
+
+Views
+
+1. Views are visual representations of models that present of filtered view of their current state.
+2. A view observes a model and is notified when it gets updated.
+3. Many people say that views are dumb because their knowledge of models and controllers is limited.
+4. Users are able to interact with views. Reading and editing models through views.
+5. An good example is that this is the user-interface AKA with a photo gallery we would provide an edit button in which the user is now editing a photo. Remember, these edits change the meta-data. Just like when we would update the admin panel in our tshirt shop and that would edit the data of our database. But, it will only edit the meta-data not the actualy data. Only controllers can do that. That's a clear limitation but also probably safe.
+6. Here's the thing. The views don't really do things they just show things. It's up to the controller to actually make shit happen. For example, nothing is going to actually happen without an eventListener in JS. Which will send the data from the model to the controller to handle.
+
+Templating
+
+1. Basically developers suck at HTML so there are templating solutions such as Handelbars.js and Mustache.
+2. These tools provide a views markup so that developers can test out their apps properly without fucking it all up with shitty HTML.
+3. Many choose to link templates externally.
+4. However, a template is not a view. A view is an object which observes a model and keeps the visual representation up to date. A template is not really going to do that. 
+
+Controllers
+
+1. Controllers are an intermediary between Models and Views. They are responcable to updating the model when the user manipulates a view. AKA the user does something on the app (maybe clicks a button) and the controller must cary out that action. Server.
+2. In the photo example, the Controller is responcible for actually handeling the edits the user implemented.
+3. The view must tell the controller what to do. Stretegy pattern. Views however, do not actually change data in the model, typically. 
+4. In JS, controllers do work a little bit differently.
+5. Backbone as an example -
+    Backbone doesn't have true controllers.
+    So really it is just an MV.
+    It's views and routers mimick some of the behaviors of controllers.
+    Routers handle more of the controller capabillities.
+      But, routers are also not needed.
+    Routers can bind events for models and our views can respond to DOM events and rendering.
+      So basically backbone gives more capbilities to views and has a router which works a bit differntly than an actual controller.
+6. Other framework the controllers work more traditionally and update the model based on what the view tells it to do.
+    Spine.js
+      The controller updated the model based on DOM events.
+      Renders templates and ensures that views and models are kept in sync.
+7. Remember, controllers manage the logic and coordination between models and views but in some frameworks they work a bit differently.
+
+What Does MVC Give Us?
+
+1. Easier maintenance. It is very clear when updates need to be made. 
+2. By sepperating models and views we are making things a little bit more straight-forward.
+3. This allows for developers and designers to work together simultaneously in a better way.
